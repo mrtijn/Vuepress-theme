@@ -1,11 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm run build-js & npm run css-next",
-    "build-js": "watchify -vd -p browserify-hmr -e app/src/main.js -o app/dist/build.js",
-    "css-next": "postcss -u autoprefixer app/src/styles/style.css -d app/dist/ -w -m",
-    "build": "cross-env NODE_ENV=production browserify app/src/main.js | uglifyjs -c warnings=false -m > app/dist/build.js",
-    "assets": "cp node_modules/normalize.css/normalize.css assets"
+    "dev": "npm run build-js & npm run build-css",
+    "build-js": "watchify -vd -p browserify-hmr -e app/main.js -o assets/js/scripts.js",
+    "build-css": "node-sass -u autoprefixer app/styles/build.scss -d assets/css/ -w -m",
+    "build": "cross-env NODE_ENV=production browserify app/main.js | uglifyjs -c warnings=false -m > assets/js/scripts.js"
   },
   "dependencies": {
     "gsap": "^1.18.5",
@@ -18,7 +17,7 @@
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-plugin-transform-runtime": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-es2015": "^6.9.0",
     "babel-preset-stage-2": "^6.0.0",
     "babel-runtime": "^5.8.0",
     "babelify": "^7.2.0",
@@ -28,7 +27,6 @@
     "http-server": "^0.8.5",
     "imagesloaded": "^4.1.0",
     "node-sass": "^3.7.0",
-    "packery": "^2.1.0",
     "postcss-cli": "^2.5.2",
     "uglify-js": "^2.5.0",
     "vue-hot-reload-api": "^1.2.2",

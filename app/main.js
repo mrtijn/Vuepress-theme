@@ -1,7 +1,6 @@
 // GET DEPENDENCIES
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import $ from 'jQuery';
 Vue.use(require('vue-resource'));
 Vue.use(VueRouter);
 
@@ -18,17 +17,11 @@ import Footer from './footer.vue';
 Vue.component('theme-footer', Footer);
 //PAGES
 import Frontpage from './frontpage.vue';
-Vue.component('Frontpage', Frontpage);
-import Posts from './posts.vue';
+
 import Post from './post.vue';
-Vue.component('Post', Post);
+
 import Page from './page.vue';
-Vue.component('Page', Page);
-//POST TYPES
-import Work from './work.vue';
-import Workitem from './work.item.vue';
-Vue.component('Work', Work);
-Vue.component('Workitem', Workitem);
+
 
 
 //DEFINE APP
