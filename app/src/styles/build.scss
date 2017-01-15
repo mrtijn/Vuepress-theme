@@ -12,7 +12,9 @@ body {
 	height: 100%;
 }
 
-
+a{
+	display: inline-block;
+}
 a:hover, a:focus {
 	color: #2a76d2;
 	text-decoration: underline;
@@ -53,14 +55,15 @@ a:hover, a:focus {
 
 
 .view {
+	display: none;
 	width: 100%;
 	min-height: 100%;
 	position: absolute;
-	top: 0;
+	top: 50px;
 	left: 0;
 	/*opacity: 1;*/
 	z-index: 10;
-	background-color: #FFF;
+	// background-color: #FFF;
   /*padding-top: 88px;*/
 	/*visibility: hidden;*/
 	/*overflow: hidden;*/
@@ -69,16 +72,51 @@ a:hover, a:focus {
 	transition: opacity 0.2s ease-in;
 
 }
+ul{
+	list-style: none;
+}
+img{
+	max-width: 100%;
+	height: auto;
+}
+.single{
+	img{
+		max-width: 200px;
+	}
+}
 
+.img-list{
+	padding: 0;
+	li{
+		width: 25%;
+		opacity: 0;
+		float: left;
+		padding: 5px;
+		animation: imgIn 0.3s ease-out forwards;
+		@for $i from 0 to 7 {
+		  &:nth-child(#{$i}) { animation-delay: $i * 0.15s; }
+		}
 
-/*.view.v-enter{
-
-	animation: moveIn .5s both ease-out;
-
-}*/
-
-.view.v-leave,.view.v-enter{
-	opacity: 0;
+		&.big{
+			width: 50%;
+		}
+	}
+}
+@keyframes imgIn{
+	from{
+		transform: translateY(100px);
+		opacity: 0;
+	}
+	to{
+		transform: translateY(0px);
+		opacity: 1;
+	}
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0
 }
 /*.pt-page-moveToBottomEasing {
 	-webkit-animation: moveToBottom .7s ease-in-out both;
@@ -108,7 +146,7 @@ a:hover, a:focus {
 
 .item-transition{
 	position: absolute;
-	.item-enter, .item-leave {
+	.item-enter-active, .item-leave-active {
 		height: 0;
 		padding: 0 10px;
 		opacity: 0;
